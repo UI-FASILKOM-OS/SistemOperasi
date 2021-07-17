@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- File _layouts/layout.html           -->
+<!-- (c) 2021 - 2021 VauLSMorg           -->
+<!-- REV01: Tue 06 Jul 2021 10:22:06 WIB -->
+<!-- START: Wed 17 Feb 2021 19:44:53 WIB -->
+<!-- This is a free HTML file            -->
+{% include head.html %}
+<body class="plainclass1">
+<!-- body class="backclass" -->
+<div class="container">
+  <header>
+  <div class="row">
+    <div class="column left">
+      <img src="{{ site.baseurl }}/assets/images/yoda.jpg" alt="Mr. Yoda" style="width:130px; border-radius:50%">
+    </div>
+    <div class="column right1">
+      {{ site.title | escape }}
+    </div>
+    <div class="column right2">
+      {{ site.author | escape }}
+      ---
+      {% if page.address %}{{ page.address | escape }}
+      {% else %}{{ site.address | escape }}{% endif %}
+    </div>
+  </div>
+  </header>
+  {% include navbar.html %}
+  <section>
+     {{ content }}
+  </section>
+  {% include footer.html %}
+  {% include google-analytics.html %}
+  {% include scripts.html %}
+</div>
+</body>
+</html>
+
+

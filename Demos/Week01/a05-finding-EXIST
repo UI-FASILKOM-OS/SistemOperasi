@@ -1,0 +1,44 @@
+#!/bin/bash
+# REV07: Sun Feb 23 15:36:04 WIB 2020
+# REV06: Thu Feb  6 20:40:10 WIB 2020
+# REV05: Mon Aug 27 20:02:29 WIB 2018
+# START: Mon Sep  5 14:25:10 WIB 2016
+
+# Copyright (C) 2016-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Finding "EXISTS". Just run "bash a05-finding-EXIST"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+echo ""; 
+echo "File list:"
+echo "=========="
+
+for file in `ls a*`
+do
+   echo -n $file
+   if grep -q EXIST $file
+      then
+      echo -n " YES *******"
+   fi
+   echo ""
+	
+done
+
+exit 0
+
+################
+# TAKE NOTE (ZA)
+# 
+# (Line 14)  variable RESULT akan menampung setiap nama file yang ada di 
+#            dalam folder W01-demos dengan menggunakan line scripting.
+# (Line 20)  mencetak kata File list: dalam tipe string.
+# (Line 21)  mencetak suatu simbol dalam tipe string.
+# (Line 23)  Jika file tersebut masih terdapat pada folder W01-demos maka 
+#            nama file tersebut akan diprint.
+

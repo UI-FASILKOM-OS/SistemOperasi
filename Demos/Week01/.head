@@ -1,0 +1,15 @@
+#!/bin/bash
+# START: Sun Feb 23 15:53:20 WIB 2020
+
+# Copyright (C) 2020-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Put some information here.
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+

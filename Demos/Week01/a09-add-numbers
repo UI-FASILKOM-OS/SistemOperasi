@@ -1,0 +1,47 @@
+#!/bin/bash
+# REV07: Sun Feb 23 15:36:04 WIB 2020
+# REV06: Thu Feb  6 23:29:22 WIB 2020
+# REV04: Mon Aug 27 20:08:44 WIB 2018
+# REV02: Fri Sep  8 21:58:04 WIB 2017
+# START: Mon Sep  5 14:44:23 WIB 2016
+
+# Copyright (C) 2016-2020 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Add line numbers to a file. Run "bash a09-add-numbers ZA-thisfile1.txt"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+echo ""; 
+
+[ -f "$1" ] || {
+   echo "File $1 does not exist"
+   exit -1
+}
+
+awk '
+BEGIN {
+   lll=1
+}
+{
+   printf "%3.3d %s\n", lll++, $0
+}' $1 > $1.txt
+
+echo "See output file $1.txt"
+
+exit
+
+##################################
+# TAKE NOTE (ZA)
+#
+# Program ini akan menambahkan line numbers pada setiap baris 
+# di file tersebut. 
+# Jika file yang dicari tidak ada maka akan keluar output 
+#        File (file) does not exist 
+#
+# awk: sebuah perintah pada Linux / Unix yang mempunyai kegunaan untuk 
+#      mem-parsing atau mengurai sebuah file.
+

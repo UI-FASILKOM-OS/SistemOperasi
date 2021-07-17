@@ -1,0 +1,40 @@
+# REV02: Mon Oct 12 11:09:19 WIB 2020
+# REV01: Thu Mar 12 10:06:45 WIB 2020
+# START: Sun Jan 26 13:34:59 WIB 2020
+# FileName: 20-uts201
+
+# Copyright (C) 2020-2020 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: UTS 2020-1 (midterm)
+# INFO:     What is the output of:
+# INFO:        bash a20-uts201
+# INFO:        bash a20-uts201 a20-uts201
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+
+function INFO() {
+   if [ -z "$1" ]
+   then
+      printf "Script Name: $SCRIPT\n"
+   else if [ -e "$1" ]
+      then
+         RESULT=$(grep "$PREFIX" "$1")
+         if [ ! -z "$RESULT" ]
+         then
+            printf "[$SCRIPT] $RESULT\n"
+         fi
+      fi
+   fi
+}
+PREFIX="^# FileName: "
+SCRIPT="$0"
+INFO "$1"
+exit 0
+
+

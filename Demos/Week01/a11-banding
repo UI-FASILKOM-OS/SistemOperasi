@@ -1,0 +1,117 @@
+#!/bin/bash
+# REV12: Sun Feb 23 15:36:04 WIB 2020
+# REV11: Thu Feb  6 22:35:34 WIB 2020
+# REV10: Mon Aug 27 20:09:17 WIB 2018
+# REV04: Mon Sep 11 14:51:36 WIB 2017
+# START: Xxx Xxx XX XX:XX:XX XXX 2009
+
+# Copyright (C)2009-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Comparing folder "ZB-SOURCE/" and "ZC-BACKUP/". Run "bash a11-banding"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+# Bandingkan isi FlashDisk dengan HardDisk
+
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+
+DIR1="ZB-SOURCE/"
+DIR2="ZC-BACKUP/"
+
+APA="apa"
+XX="xx"
+DATE=`date`
+
+ROPT1="-aucv --delete --backup --backup-dir=/tmp/BAK1-rsync-$$/"
+ROPT2="-aucv --delete --backup --backup-dir=/tmp/BAK2-rsync-$$/"
+
+STAMP1="${DIR1}.XSTAMP1"
+STAMP2="${DIR2}.XSTAMP2"
+
+sync
+echo "banding apa: naik atau turun?"
+echo "banding xx:  togle naik/turun"
+
+[ -d $DIR1 ] && [ -d $DIR2 ] || {
+   echo "DINGDONG: Mana $DIR1 atau $DIR2 ???"
+   exit 1
+}
+
+( [ -f $STAMP1 ] && [ -f $STAMP2 ] ) || {
+    echo "Create STAMPS"
+    touch $STAMP2
+    sleep 1
+    touch $STAMP1
+}
+
+[ "$1" = "$XX" ] && {
+   [ $STAMP1 -nt $STAMP2 ] && {
+      echo "STATUS: (^^^^^ AKAN NAIK  ^^^^^)"
+      echo "STATUS: (vvvvv JADI TURUN vvvvv)"
+      touch $STAMP2
+      exit 0
+   }
+   echo "STATUS: (vvvvv AKAN TURUN vvvvv)"
+   echo "STATUS: (^^^^^ JADI NAIK   ^^^^^)"
+   touch $STAMP1
+   exit 0
+} 
+
+[ "$1" = "$APA" ] && {
+   [ $STAMP1 -nt $STAMP2 ] && {
+      echo "STATUS: (^^^^^ AKAN NAIK ^^^^^)"
+      exit 0
+   }
+   echo "STATUS: (vvvvv AKAN TURUN vvvvv)"
+   exit 0
+}
+
+[ -d $DIR1 ] || mkdir -p $DIR1
+[ -d $DIR2 ] || mkdir -p $DIR2
+
+[ $STAMP1 -nt $STAMP2 ] && {
+    echo "START: TO TESTBACKUP (^^^^^ NAIK ^^^^^)"
+    ls -al $STAMP1 $STAMP2
+    echo "READY? (HIT ENTER) -- "
+    sync
+    read dummy
+    date
+    rsync $ROPT1 $DIR1 $DIR2
+    date
+    touch $STAMP2
+    ls -al $STAMP1 $STAMP2
+    echo "END:   TO TESTBACKUP (^^^^^ NAIK ^^^^^)"
+    echo $DATE
+    date
+    sync
+    date
+    sync
+    exit 0
+}
+
+echo "START: TO TESTFROM (vvvvv TURUN vvvvv)"
+ls -al $STAMP1 $STAMP2
+echo "READY?"
+sync
+read dummy
+date
+rsync $ROPT2 $DIR2 $DIR1
+date
+touch $STAMP1
+ls -al $STAMP1 $STAMP2
+echo "END:   TO TESTFROM (vvvvv TURUN vvvvv)"
+echo $DATE
+date
+sync
+date
+sync
+
+echo "Compare folders $DIR1 and $DIR2"
+exit 0
+
+

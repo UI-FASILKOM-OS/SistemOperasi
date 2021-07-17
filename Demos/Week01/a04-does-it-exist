@@ -1,0 +1,35 @@
+#!/bin/bash
+# REV07: Sun Feb 23 15:36:04 WIB 2020
+# REV06: Thu Feb  6 20:34:23 WIB 2020
+# REV05: Mon Aug 27 19:57:50 WIB 2018
+# START: Mon Sep  4 16:42:56 WIB 2017
+
+# Copyright (C)2017-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Does a file exists? Run "bash a04-does-it-exist"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+FILE2="ZA-thisfile1.txt"
+FILE1="ThisFileDoesNotExist"
+
+echo ""; 
+[ -f $FILE1 ] && {
+  echo "File: \"$FILE1\" EXISTS!"
+}
+[ -f $FILE1 ] || {
+  echo "File: \"$FILE1\" does not EXISTS!"
+}
+if [ -f $FILE2 ] ; then
+  echo "File: \"$FILE2\" EXISTS!"
+else
+  echo "File: \"$FILE2\" does not EXISTS!"
+fi
+exit 0
+
+

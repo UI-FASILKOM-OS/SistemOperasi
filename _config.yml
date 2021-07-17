@@ -1,0 +1,30 @@
+title: Operating Systems - Sistem Operasi
+version:     "0320---14-Jul-2021"
+copyright:   "2018-2021"
+description: This is the CSF-265 Operating System course site,
+      a GitHub Page, hosted at GitHub.com (thank you!).
+      It contains links to lecture materials, exam questions, and laboratory materials.
+      It is based on "Google Here, Google There, Try This, Try That, and then Ask Anybody (GHGTT4A2)".
+      This site is managed by VauLSMorg ([vlsm.org](http://vlsm.org/)) since 2018.
+disc: You are free to share, copy and redistribute the material of this site 
+      in any medium or format for any purpose, even commercially. 
+      Please give appropriate credit, provide a link to the page, 
+      and indicate if changes were made. You may do so in any reasonable manner. 
+      You should not apply legal terms or technological measures, 
+      that legally restrict others from doing anything that is permitted here.
+author: RMS46
+google_analytics: UA-89852122-3
+address: "VauLSMorg, Pamulang."
+sitemap: true
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+urlweb:           "https://os.vlsm.org/"
+urlscele:         "https://scele.cs.ui.ac.id/course/view.php?id=3134"
+urllogcode:       "https://osp4diss.vlsm.org/ETC/logCodes.txt"
+urlcontact:       "TBA"
+urlgithub:        "https://github.com/UI-FASILKOM-OS/SistemOperasi"
+urlghpage:        "https://os.vlsm.org/"
+keywords:         "jekyll, testing"
+github:           [metadata]
+

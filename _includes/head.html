@@ -1,0 +1,19 @@
+<!-- File _includes/head.html             -->       
+<!-- (c) 2021 - 2021 VauLSMorg            -->
+<!-- START: Wed 17 Feb 2021 19:48:31 WIB  -->
+<!-- This is a free HTML file             -->
+<head>
+  <title>
+    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}
+    {% else %}{{ site.title | escape }}{% endif %}
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport"    content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.excerpt | default: site.description }}">
+  <!-- link href="{{ site.baseurl }}/assets/css/css.css" rel="stylesheet" type="text/css" title="Style" -->
+  <!-- link href="/assets/css/css.css" rel="stylesheet" type="text/css" title="Style" -->
+  <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet" type="text/css" title="Style">
+</head>
+
+
+

@@ -1,0 +1,27 @@
+---
+layout: "layout"
+title:  "TITLE"
+---
+
+<img src="{{ site.baseurl }}/assets/images/doit-004.jpg" style="width:960px;">
+<br>
+
+[](X 13 XXXXXX)
+<br>
+### INPUT
+```
+
+```
+
+### OUTPUT
+```
+
+===== TL;DR =====
+```
+
+```
+123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789
+         1         2         3         4         5         6         7         8         9
+
+```
+

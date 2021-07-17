@@ -1,0 +1,49 @@
+#!/bin/bash
+# REV06: Sun Feb 23 15:41:00 WIB 2020
+# REV05: Thu Feb  6 22:50:41 WIB 2020
+# REV04: Tue Feb 19 19:10:55 WIB 2019
+# REV01: Thu Mar 30 17:29:35 WIB 2017
+# START: Wed Mar 29 17:28:20 WIB 2017
+#
+# Copyright (C) 2017-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# ===============================================
+# cut     remove sections from each line of files
+# cut -c  select only these characters
+# sha1sum compute and check SHA1 message digest
+# tr      translate or delete characters
+
+# INFO: UTS 2017-1 (midterm)
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+isADigit() {
+   [[ $VARIABLE =~ $REGEX ]] || {
+      TEXT1="VARIABLE $VARIABLE is not a digit."
+      return
+   }
+   [[ ${#VARIABLE} =~ $TEN ]] && {
+      TEXT1="VARIABLE $VARIABLE has 10 digits."
+      return
+   }
+   TEXT1="VARIABLE $VARIABLE has no 10 digits."
+}
+
+ONE='1'
+TEN='10'
+REGEX='^[0-9]+$'
+VARIABLE='1234567892'
+HASH=`echo "$VARIABLE" | sha1sum`
+echo        "$HASH"
+isADigit
+TEXT2=`echo "$HASH"  | cut -c1-3`
+TEXT3=`echo "$TEXT2" | tr '[a-z]' '[A-Z]'`
+echo "$TEXT1"
+echo "$TEXT2"
+echo "$TEXT3"
+exit 0
+

@@ -1,0 +1,34 @@
+#!/bin/bash
+# REV07: Sun Feb 23 15:36:04 WIB 2020
+# REV06: Thu Feb  6 21:20:33 WIB 2020
+# REV05: Mon Aug 27 20:07:59 WIB 2018
+# START: Mon Sep  5 14:38:26 WIB 2016
+
+# Copyright (C) 2016-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Just run "bash a07-tester"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+echo ""; 
+
+for II in ZA-thisfile1.txt ZB-SOURCE NOTHING
+do
+   echo "================================"
+   [ -f $II ] && echo "[$II] is a file"
+   [ -f $II ] || echo "[$II] is NOT a file"
+
+   if [ -d $II ] 
+      then echo "[$II] is a directory"
+   else 
+      echo "[$II] is NOT a directory"
+   fi
+done
+echo "================================"
+
+exit
+

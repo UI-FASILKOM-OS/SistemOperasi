@@ -1,0 +1,60 @@
+# INFO: Read This First! ==== ========= =========
+# Version: Tue 30 Mar 17:57:29 WIB 2021
+cat $0; exit 0;
+========= ========= ========= ========= ========= ========= ========= =========
+These files are available in (https://os.vlsm.org/)
+GitHub:
+https://github.com/UI-FASILKOM-OS/SistemOperasi/tree/master/Demos
+https://github.com/UI-FASILKOM-OS/SistemOperasi/archive/master.zip
+
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+========= ========= ========= ========= ========= ========= ========= =========
+HOW TO COMPILE THIS DEMO
+========================
+
+Just run: make
+
+[000-READ-THIS-FIRST.txt] Read This First! ==== ========= =========
+[     00-hallo.c] Hello World! A C program test.
+[01-printf-int.c] An introduction to function printf().
+[02-printf-etc.c] More printf() examples.
+[      03-loop.c] a loop example.
+[ 04-argc-argv.c] Abount variables "argv" and "argc" in function main().
+                  run with an argument: ./04-argc-argv arg1 arg2 arg3
+[      05-envp.c] About variable "envp" in main().
+[      06-scan.c] An introduction to function scanf().
+[    07-status.c] An introduction to function getpid() and getppid().
+[   08-pointer.c] An introduction to pointers.
+[  09-function.c] An introduction to function().
+[    10-uts171.c] UTS 2017-1 (midterm)
+[    11-uts172.c] UTS 2017-2 (midterm)
+[    12-uts181.c] UTS 2018-1 (midterm)
+[    13-uts182.c] UTS 2018-1 (midterm)
+[    14-uts191.c] UTS 2019-1 (midterm)
+[    15-uts192.c] UTS 2019-2 (midterm)
+[    16-uts201.c] UTS 2020-1 (midterm)
+[       Makefile] With this "Makefile", just run:
+                    make
+========= ========= ========= ========= ========= ========= ========= =========
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+# Special thanks to:
+# Anisha Inas Izdihar (AII), Benedictus Alvin (BA), Ibnu Sofian 
+# Firdaus (ISF), Irmanpen Panjaitan (IP), Ivana Irene Thomas (IIT),
+# Michael Giorgio Wirawan (MGW), Muhammad Afkar (MA), Muhammad 
+# Hanif Pratama (MHP), Muhammad Iqbal Mahendra (MIM), M. Ikhsan 
+# Kurniawan (MIK), Nixi Sendya Putri (NSP), Raihan Mahendra Sutanto
+# (RM), Rizki Leonardo (RL), Shavira Adeva (SA), Stefan Mayer 
+# Sianturi (SMS), Thrisnadevany Amalia (TA), Zhelia Alifa (ZA)
+
+# REV18: Thu 25 Mar 2021 18:20:42 WIB
+# REV17: Wed 24 Mar 18:53:09 WIB 2021
+# REV16: Mon 14 Sep 21:09:26 WIB 2020
+# REV07: Wed 13 Mar 14:15:03 WIB 2019
+# START: Tue 20 Feb 09:12:43 WIB 2018
+
+# Copyright (C) 2018-2021 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

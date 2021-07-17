@@ -1,0 +1,63 @@
+FUSE DEMO STEP by STEP
+======================
+
+ATTN: This does not work for WSL! See also 
+      http://www.secfs.net/winfsp/blog/files/winfsp-2017.html
+      https://wpdev.uservoice.com/forums/266908-command-prompt-console-windows-subsystem-for-l/suggestions/13522845-add-fuse-filesystem-in-userspace-support-in-wsl
+
+1. UBUNTU's deb packages (privilege): 
+   sudo apt-get install autoconf automake build-essential \
+                fuse libfuse-dev lynx pkg-config sshfs
+
+2. Get a NEW tarball with
+      wget http://www.cs.nmsu.edu/~pfeiffer/fuse-tutorial.tgz
+   OR use the current fuse-tutorial.tgz
+
+3. List and open the tarball with
+   tar tfz fuse-tutorial.tgz
+   tar xfz fuse-tutorial.tgz
+
+4. Enter the directory (yours may be a different version)
+   cd fuse-tutorial-2018-02-04/
+   ls -al
+
+5. Read the manual with  
+   lynx index.html
+
+6. Run
+   ./configure
+   make
+
+7  cd example
+
+TO TRY:
+$ ls -al rootdir
+$ ls -al mountdir
+$ df
+$ ../src/bbfs rootdir/ mountdir/
+$ df
+$ ls -al rootdir
+$ ls -al mountdir
+
+TO PLAY:
+$ cd mountdir
+$ touch blah-blah-blah.txt
+$ ls -al
+$ cd ..
+$ ls -al rootdir
+
+TO FINISH:
+$ fusermount -u mountdir
+
+EXTRA:
+# /etc/fstab: configuration of filesystems
+# /etc/mtab -->  /proc/mounts: mounted filesystems
+# /proc/swaps: swap filesistems
+# df: checking diskspace and filesystems
+# GUID (Globally Unique IDentifiers) ls -al /dev/disk/by-uuid
+
+RMS
+
+(Last update: Wed Feb 19 07:48:55 WIB 2020)
+
+

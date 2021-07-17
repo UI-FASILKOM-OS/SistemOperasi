@@ -1,0 +1,365 @@
+#!/bin/bash
+# REV20: Sun Feb 23 15:36:04 WIB 2020
+# REV19: Thu Feb  6 19:43:17 WIB 2020
+# REV16: Thu Feb 14 12:39:53 WIB 2019
+# REV14: Mon Aug 27 20:05:24 WIB 2018
+# START: Mon Feb 13 20:22:22 WIB 2017
+
+# Copyright (C) 2017-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: This script is sorting files and preparing the demo.
+#    Just run "bash a02-sort-n-prepare"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+echo "Just run this script:"
+echo "bash $0    (... for RESET and START)"
+echo "bash $0 xx (... for RESET and END)"
+echo "Check and compare with:"
+echo "ls -al"
+echo "Do also:"
+echo "bash a01-READ-ME"
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+
+HEAD="a" 
+TMPHEAD="ZTMP"
+START="0"
+TMPSEQ="1000"
+TMPFILE1="ZA-thisfile1.txt"
+TMPFILE2="ZA-thisfile2.txt"
+TESTDIR1="ZB-SOURCE"
+TESTDIR2="ZC-BACKUP"
+AWKPROG="$TESTDIR1/file.awk"
+CPROGRAM="$TESTDIR1/program2.c"
+FILE1="$TESTDIR1/file1.txt"
+FILE2="$TESTDIR1/file2.txt"
+FILE3="$TESTDIR1/80x23.txt"
+FILE4="$TESTDIR1/SIAK.txt"
+FILE5="$TESTDIR1/16-5A9FFD923E.txt"
+FILE6="$TESTDIR1/ZMISC.txt"
+DEL="xx"
+
+# check is "aXX-XXXXX" files exist.
+for FF in ${HEAD}* ; do
+   [ -e $FF ] && {
+      NFILES=$(ls ${HEAD}* | wc -l)
+      FORMAT="%${#NFILES}.${#NFILES}d"
+   } || { 
+      echo "No $FF"
+      exit
+   }
+done
+
+# temporary rename "aXX-YYYYY" to "ZTMPXX-YYYYY"
+SEQ=$TMPSEQ
+for FF in ${HEAD}* ; do
+   ((SEQ++))
+   TMPNAME=$(echo $FF | cut -d"-" -f2-)
+   TMPNAME=$(printf "${TMPHEAD}${FORMAT}-$TMPNAME" $SEQ)
+   [[ $FF != $TMPNAME ]] && /bin/mv $FF $TMPNAME 
+done
+
+# rearrange back from "ZTMPXX-YYYYY" to "aXX-YYYYY".
+SEQ=$START
+for FF in ${TMPHEAD}* ; do
+   ((SEQ++))
+   NEWNAME=$(echo $FF | cut -d"-" -f2-)
+   NEWNAME=$(printf "${HEAD}${FORMAT}-${NEWNAME}" $SEQ)
+   [[ $FF != $NEWNAME ]] && /bin/mv $FF $NEWNAME 
+   chmod 755 $NEWNAME
+done
+chmod 644 ${HEAD}*
+
+# Cleaning
+rm -rf $TESTDIR1 $TESTDIR2 ${TMPFILE2}* ${TMPFILE1}*
+
+[ "$1" = "$DEL" ] && exit 0
+
+# ###############################################################
+# Creating new Demo directories.
+mkdir -p $TESTDIR1 $TESTDIR2
+touch "$TESTDIR1/abcd 'xyz NNNN"
+touch "$TESTDIR1/#wah , berkas * ini ^ aneh & ajaib"
+touch "$TESTDIR1/[email anda : cicak@bin.kadal?!]"
+touch "$TESTDIR1/x y z \" z y x"
+touch "$TESTDIR1/x y z \" (z y) x"
+touch "$TESTDIR1/x y z \" (z y)"
+chmod -R 755 $TESTDIR1
+
+# ###############################################################
+# Demo progam for AWK
+cat > $AWKPROG << NNNN
+# REV01 Thu Feb 16 15:25:32 WIB 2017
+# START Mon Sep  5 15:18:07 WIB 2016
+BEGIN           { FS=":" 
+                  print ""
+                  print "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" }
+END             { print "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" }
+                { printf " %-20s  %5s  %5s \n", \$1,  \$3,  \$4 }
+NNNN
+
+# ###############################################################
+# Demo for program C
+cat > $CPROGRAM << NNNN
+/* REV02 Fri Sep  8 21:17:45 WIB 2017
+ * START Mon Feb 13 20:22:22 WIB 2017
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * This is a free software.
+ */
+#define LOOP1 400
+#define LOOP2 1000000
+#include <stdio.h>
+
+void main() {
+   int ii, jj, kk=0;
+   for (ii=0;ii<LOOP1;ii++) {
+      for (jj=0;jj<LOOP2;jj++) {
+         kk = kk + ii;
+      }
+   }
+   printf("Result=%d\n",kk);
+}
+NNNN
+
+# Files for demo
+# ###############################################################
+cat > $TMPFILE1 << NNNN
+1. This is no. 1.
+2. This is no. 22.
+3. This is no. 333.  
+4. This is no. 4 4 4 4.
+5. This is Joko.
+6. This is Joko Joko.
+7. This is joko.
+8. This is Bowo.
+9. This is bowo.
+sed    'G'    $TMPFILE1
+sed    'G;G'  $TMPFILE1
+sed -n '4,6p' $TMPFILE1
+sed -n '4,6p' $TMPFILE1 > $TMPFILE2
+sed -n '/[0-9]\{2\}/p' $TMPFILE1
+sed    '4,6d' $TMPFILE1
+sed    '\$d' $TMPFILE1
+sed    '5,/HABATS/d'   $TMPFILE1
+sed    's/Joko/Bowo/'   $TMPFILE1
+sed    's/Joko/Bowo/2' $TMPFILE1
+sed    's/Joko/Bowo/g' $TMPFILE1
+sed    's/Bowo\\|bowo/Joko/g' $TMPFILE1
+awk    '{print "Hello awk!"}' $TMPFILE1
+awk    '{print \$0}' $TMPFILE1
+awk    '{print \$1}' $TMPFILE1
+awk    '{print \$2}' $TMPFILE1
+HABATS: This is the last line, dude!
+NNNN
+# ###############################################################
+cat > $FILE1 << NNNN
+Potong Bebek Angsa, masak di kuali...
+Nona minta dansa, dansa empat kali...
+Sorong ke kiri, sorong ke kanan...
+Lala lala lala lala la la la... 
+NNNN
+# ###############################################################
+cat > $FILE2 << NNNN
+Potong Bebek Angsa, masak di kuali...
+Nona minta dansa, dansa empat kali...
+Sorong ke kiri, Biak ke kanan...
+Lala lala lala lala la Papua... 
+NNNN
+cat > $FILE3 << NNNN
+01 START START START START START START START START START START START START START
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+         10        20        30        40        50        60        70       79
+
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+
+         10        20        30        40        50        60        70       79
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+09 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+XXXXX                           TEST FOR 80 x 23                           XXXXX
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+         10        20        30        40        50        60        70       79
+
+         10        20        30        40        50        60        70       79
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+19 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+         10        20        30        40        50        60        70       79
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+23 END END END END  END END END END  END END END END END END END END END END END
+NNNN
+cat > $FILE4 << NNNN
+
+
+
+1606999999 - Cicak Bin Kadal
+
+    Berdasarkan Term
+    Berdasarkan Mata Kuliah
+    Transfer SKS
+
+No. 	Kode MK 	Kurikulum 	Nama MK 	Kelas 	SKS 	Status IRS 	N. Akhir 	N. Huruf 	Detail
+Tahun Ajaran 2016/2017 Term 1
+1. 	CSGE601020 	06.00.12.01-2016 	Dasar-Dasar Pemrograman 1 	DDP 1 - C 	4 	Disetujui 	85.85 	A 	detail
+2. 	UIST601111 	06.00.12.01-2016 	Fisika Dasar 1 	Fisika Dasar 1 - A 	3 	Disetujui 	70.93 	B 	detail
+3. 	UIST601014 	06.00.12.01-2016 	Matematika Dasar 1 	Matdas 1 - B 	3 	Disetujui 	59.01 	C 	detail
+4. 	CSGE601010 	06.00.12.01-2016 	Matematika Diskret 1 	MD 1 - E 	3 	Disetujui 	41.08 	D 	detail
+5. 	UIGE600002 	06.00.12.01-2016 	MPK Terintegrasi B 	MPKT B - Kelas E 	6 	Disetujui 	82.20 	A- 	detail
+Tahun Ajaran 2016/2017 Term 2
+6. 	CSIM601251 	06.00.12.01-2016 	Dasar-Dasar Arsitektur Komputer 	DDAK - C 	4 	Disetujui 	26.22 	E 	detail
+7. 	CSGE601021 	01.00.12.01-2016 	Dasar-dasar Pemrograman 2 	DDP 2 -B 	4 	Disetujui 	83.47 	A- 	detail
+8. 	CSGE601011 	01.00.12.01-2016 	Matematika Diskret 2 	MD 2 - E 	3 	Disetujui 	Kosong B+ 	detail
+9. 	UIGE600001 	01.00.12.01-2016 	MPK Terintegrasi A 	MPKT A - Kelas G 	6 	Disetujui 	67.15 	B- 	detail
+10. 	CSIM601280 	06.00.12.01-2016 	Prinsip-Prinsip Sistem Informasi 	PPSI - A 	3 	Disetujui 	63.97 	C+ 	detail
+Tahun Ajaran 2016/2017 Term 3
+11. 	CSGE602012 	01.00.12.01-2016 	Aljabar Linier 	Aljabar Linier - A 	3 	Disetujui 	90.91 	A 	detail
+12. 	CSGE601010 	01.00.12.01-2016 	Matematika Diskret 1 	Matematika Diskret 1 	3 	Disetujui 	Kosong 	B 	detail
+Tahun Ajaran 2017/2018 Term 1
+13. 	CSIM602160 	06.00.12.01-2016 	Administrasi Bisnis 	Adbis - B 	3 	Disetujui 	62.94 	C+ 	detail
+14. 	CSGE601021 	01.00.12.01-2016 	Dasar-dasar Pemrograman 2 	DDP 2 	4 	Disetujui 	58.10 	C 	detail
+15. 	UIGE600010 	06.00.12.01-2016 	MPK Agama Islam 	Agama Islam B 	2 	Disetujui 	84.75 	A- 	detail
+16. 	CSGE602022 	06.00.12.01-2016 	Perancangan & Pemrograman Web 	PPW - E 	3 	Disetujui 	48.62 	D 	detail
+17. 	CSIM602161 	06.00.12.01-2016 	Prinsip-Prinsip Manajemen 	PPM - B 	3 	Disetujui 	64.82 	B- 	detail
+Tahun Ajaran 2017/2018 Term 2
+18. 	CSIM601251 	06.00.12.01-2016 	Dasar-Dasar Arsitektur Komputer 	DDAK - A 	4 	Disetujui 	Kosong 	D 	detail
+19. 	UIGE600003 	06.00.12.01-2016 	MPK Bahasa Inggris 	Bhs Inggris E 	3 	Disetujui 	Kosong E 	detail
+20. 	CSGE602022 	06.00.12.01-2016 	Perancangan & Pemrograman Web 	PPW 	3 	Disetujui 	Kosong C 	detail
+21. 	CSIM602266 	06.00.12.01-2016 	Sistem Informasi Akuntansi Keuangan 	SIAK - B 	3 	Disetujui 	Kosong 	D 	detail
+22. 	CSIM602262 	06.00.12.01-2016 	Sistem-Sistem Perusahaan 	SSP - B 	3 	Disetujui 	Kosong 	C+ 	detail
+23. 	CSGE602040 	01.00.12.01-2016 	Struktur Data & Algoritma 	SDA 	4 	Disetujui 	Kosong B- 	detail
+Tahun Ajaran 2017/2018 Term 3
+24. 	CSGE602013 	06.00.12.01-2016 	Statistika dan Probabilitas 	Statprob 	3 	Disetujui 	Kosong 	D 	detail
+Tahun Ajaran 2018/2019 Term 1
+25. 	CSIM603026 	06.00.12.01-2016 	Arsitektur & Pemrograman Aplikasi Perush. 	APAP-A 	4 	Disetujui 	Kosong 	C+ 	detail
+26. 	CSGE602070 	06.00.12.01-2016 	Basis Data 	Basis Data 	4 	Disetujui 	Kosong 	D 	detail
+27. 	CSIM601251 	07.00.12.01-2016 	Dasar-Dasar Arsitektur Komputer 	Ekst : DDAK 	4 	Disetujui 	Kosong 	B- 	detail
+28. 	CSIM603124 	06.00.12.01-2016 	Sistem Interaksi 	Sister-B 	3 	Disetujui 	Kosong A- 	detail
+Tahun Ajaran 2018/2019 Term 2
+29. 	CSGE602070 	01.00.12.01-2016 	Basis Data 	Basis Data - D 	4 	Disetujui 	Kosong 	C+ 	detail
+30. 	CSIM603291 	06.00.12.01-2016 	Komunikasi Bisnis dan Teknis 	Kombistek - A 	3 	Disetujui 	Kosong 	B 	detail
+31. 	CSIE604180 	06.00.12.01-2016 	Manajemen Pengetahuan 	KM - A 	3 	Disetujui 	Kosong 	C+ 	detail
+32. 	CSGE603291 	06.00.12.01-2016 	Metodologi Penelitian & Penulisan Ilmiah 	MPPI - A 	3 	Disetujui 	Kosong 	B+ 	detail
+33. 	CSGE602055 	01.00.12.01-2016 	Sistem Operasi 	Sistem Operasi - A 	4 	Disetujui 	Kosong C 	detail
+Tahun Ajaran 2019/2020 Term 1
+34. 	CSIM603183 	06.00.12.01-2016 	Analisis dan Perancangan Sistem Informasi 	Anaperancis-B 	3 	Disetujui 	Kosong 	C 	detail
+35. 	CSIE604160 	06.00.12.01-2016 	E-Dagang 	E-Dagang - A 	3 	Disetujui 	Kosong 	B- 	detail
+36. 	CSIM603154 	06.00.12.01-2016 	Jaringan Komunikasi Data 	JarKomDat-A 	3 	Disetujui 	Kosong 	C 	detail
+37. 	CSGE604098 	06.00.12.01-2016 	Kerja Praktik 	Kerja Praktik - B 	3 	Disetujui 	Kosong A 	detail
+38. 	CSIM603189 	06.00.12.01-2016 	Manajemen Proyek TI 	ManPro TI-A 	3 	Disetujui 	Kosong C+ 	detail
+39. 	CSIE604161 	06.00.12.01-2016 	Sistem Informasi Kesehatan 	e-Health 	3 	Disetujui 	Kosong 	B 	detail
+40. 	CSGE602013 	06.00.12.01-2016 	Statistika dan Probabilitas 	Statprob 	3 	Disetujui 	Kosong 	C 	detail
+
+
+DODOL
+
+DODOL
+
+DODOL
+
+
+NNNN
+
+cat > $FILE5 << NNNN
+
+11 CSGE601020 4 A   4
+11 UIST601111 3 B   7
+11 UIST601014 3 C  10
+11 CSGE601010 3 D  13
+11 UIGE600002 6 A- 19
+12 CSIM601251 4 E   4
+12 CSGE601021 4 A-  8
+12 CSGE601011 3 B+ 11
+12 UIGE600001 6 B- 17
+12 CSIM601280 3 C+ 20
+13 CSGE602012 3 A   3
+13 CSGE601010 3 B   6
+21 CSIM602160 3 C+  3
+21 CSGE601021 4 C   7
+21 UIGE600010 2 A-  9
+21 CSGE602022 3 D  12
+21 CSIM602161 3 B- 15
+22 CSIM601251 4 D   4
+22 UIGE600003 3 E   7
+22 CSGE602022 3 C  10
+22 CSIM602266 3 D  13
+22 CSIM602262 3 C+ 16
+22 CSGE602040 4 B- 20
+23 CSGE602013 3 D   3
+31 CSIM603026 4 C+  4
+31 CSGE602070 4 D   8
+31 CSIM601251 4 B- 12
+31 CSIM603124 3 A- 15
+32 CSGE602070 4 C+  4
+32 CSIM603291 3 B   7
+32 CSIE604180 3 C+ 10
+32 CSGE603291 3 B+ 13
+32 CSGE602055 4 C  17
+41 CSIM603183 3 C   3
+41 CSIE604160 3 B-  6
+41 CSIM603154 3 C   9
+41 CSGE604098 3 A  12
+41 CSIM603189 3 C+ 15
+41 CSIE604161 3 B  18
+41 CSGE602013 3 C  21
+NNNN
+
+# ###############################################################
+
+cat > $FILE6 << NNNN
+
+#!/bin/bash
+# REV12 Thu Jan 30 11:38:07 WIB 2020
+# REV11 Wed Sep  5 20:08:38 WIB 2018
+# REV07 Sun Feb 18 16:21:56 WIB 2018
+# START Sun Aug 27 22:43:56 WIB 2017
+
+# qrc2txt
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+QRCFILE="QRC-"
+MASTERFILE="MASTER.txt"
+TMPFILE1X="tmp1.txt"
+DATAFILE="DATA.csv"
+
+rm -f $TMPFILE1X
+for FF in ${QRCFILE}* ; do
+   [ -e $FF ] && {
+      gawk '
+      $3 ~ /^[[:digit:]]{10}$/ {
+         NAME=$5
+         for (II=6;II<=NF;II++) {
+            NAME=NAME " " $II
+         }
+         printf "\"%s\",\"%s\",\"%s\",\"%s\"\n", $2, $3, $4, NAME
+      }
+      ' $FF | sort -u >> $TMPFILE1X
+   }
+done
+
+sort $TMPFILE1X > $DATAFILEX
+
+exit
+
+OS201 X 1253755125 ZCZCfake Cicak Bin Kadal
+
+NNNN
+
+# ###############################################################
+
+chmod 644 $AWKPROG $CPROGRAM $FILE1 $FILE2 $FILE3 $FILE4 $FILE5 $FILE6 ${TMPFILE1}
+
+exit 0
+

@@ -1,0 +1,29 @@
+# Copyright (C) 2016-2021 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# REV04 Thu 25 Mar 2021 12:28:54 WIB
+# REV03 Wed 24 Mar 15:13:52 WIB 2021
+# REV02 Wed 29 Aug 14:39:22 WIB 2018
+# REV01 Mon 12 Mar 19:59:22 WIB 2018
+# START Mon 03 Oct 11:47:46 WIB 2016
+
+==========
+What To DO
+==========
+
+* Learn (man, google, etc) how to use the command "top".
+* (If exists) delete OR rename file $HOME/.config/procps/toprc
+* See picture 01-top.jpg, 02-top.jpg, 03-top.jpg, 04-top.jpg, 05-top.jpg
+* Run "top" on badak:
+** Hit "h" for HELP.
+** Hit "f" for Field Management: SPACE=ON/OFF; Right Arrow: Set Move
+** Hit "w" to write a new "~/.config/procps/toprc" file
+* Arrange "top" until it display only:
+  PID, VIRT, RES, SHR, SWAP, CODE, DATA, USED, nDRT.
+* Do not forget to save the configuration by using "W" into "~/.config/procps/toprc"
+* Make program 06-memory 
+* Run program 06-memory > 07-result.txt
+
+============================================================

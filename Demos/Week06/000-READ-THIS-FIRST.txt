@@ -1,0 +1,99 @@
+# INFO: Read This First! ==== ========= =========
+# Version: Tue 30 Mar 17:57:29 WIB 2021
+cat $0; exit 0;
+========= ========= ========= ========= ========= ========= ========= =========
+These files are available in (https://os.vlsm.org/)
+GitHub:
+https://github.com/UI-FASILKOM-OS/SistemOperasi/tree/master/Demos
+https://github.com/UI-FASILKOM-OS/SistemOperasi/archive/master.zip
+
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+========= ========= ========= ========= ========= ========= ========= =========
+# INFO:                   To list files, run:  ls -al
+# INFO:                   To compile the “.c” files, run make
+# INFO:                   The recent UAS archive for WEEK06 and WEEK07 is in folder WEEK08.
+
+[000-READ-THIS-FIRST.txt] Read This First! ==== ========= =========
+                  To list files, run:  ls -al
+                  To compile the “.c” files, run make
+                  The recent UAS archive for WEEK06 and WEEK07 is in folder WEEK08.
+[  00-show-pid.c] Get PID dan PPID.
+                  PID  means Process ID (identification)
+                  to get PID, call system function getpid().
+                  PPID means Parent Process ID
+                  to get PPID, call system function getppid().
+[      01-fork.c] System call "fork()"
+                  Compare "01-fork.c", "02-fork.c", and "03-fork.c"
+                  See where the line "LOOK THIS" is.
+[      02-fork.c] System call "fork()"
+                  Compare "01-fork.c", "02-fork.c", and "03-fork.c"
+                  See where the line "LOOK THIS" is.
+[      03-fork.c] System call "fork()"
+                  Compare "01-fork.c", "02-fork.c", and "03-fork.c"
+                  See where the line "LOOK THIS" is.
+[     04-sleep.c] System call "fflush()"
+                  Compare the first loop with fflush() and the second one.
+[     05a-fork.c] System call "fork()"
+                  Compare "05a-fork.c" and "05b-fork.c".
+[     05b-fork.c] System call "fork()" and "execlp()"
+                  Compare "05a-fork.c" and "05b-fork.c".
+                  See also "00-show-pid.c" and system call "execlp()".
+[     06a-fork.c] System call "fork()"
+                  Compare 
+                     "06a-fork.c" [no    fork()],
+                     "06b-fork.c" [one   fork()],
+                     "06c-fork.c" [two   fork()s],
+                     "06d-fork.c" [three fork()s],
+[     06b-fork.c] System call "fork()"
+                  Compare 
+                     "06a-fork.c" [no    fork()],
+                     "06b-fork.c" [one   fork()],
+                     "06c-fork.c" [two   fork()s],
+                     "06d-fork.c" [three fork()s],
+[     06c-fork.c] System call "fork()"
+                  Compare 
+                     "06a-fork.c" [no    fork()],
+                     "06b-fork.c" [one   fork()],
+                     "06c-fork.c" [two   fork()s],
+                     "06d-fork.c" [three fork()s],
+[     06d-fork.c] System call "fork()"
+                  Compare 
+                     "06a-fork.c" [no    fork()],
+                     "06b-fork.c" [one   fork()],
+                     "06c-fork.c" [two   fork()s],
+                     "06d-fork.c" [three fork()s],
+[    07-execlp.c] System call "execlp()"
+                  Run: 
+                  ./07-execlp  ONE_ARGUMENT
+[      08-fork.c] System call "fork()"
+[      09-fork.c] System call "fork()"
+[      10-fork.c] System call "fork()"
+[      11-fork.c] System call "fork()"
+[      12-fork.c] System call "fork()"
+[    13-uas161.c] UTS 2016-1 (midterm)
+[    14-uas162.c] UTS 2016-2 (midterm)
+[    15-uas171.c] UTS 2017-1 (midterm)
+[    16-uas172.c] UTS 2017-2 (midterm)
+========= ========= ========= ========= ========= ========= ========= =========
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+# Special thanks to:
+# Anisha Inas Izdihar (AII), Benedictus Alvin (BA), Ibnu Sofian 
+# Firdaus (ISF), Irmanpen Panjaitan (IP), Ivana Irene Thomas (IIT),
+# Michael Giorgio Wirawan (MGW), Muhammad Afkar (MA), Muhammad 
+# Hanif Pratama (MHP), Muhammad Iqbal Mahendra (MIM), M. Ikhsan 
+# Kurniawan (MIK), Nixi Sendya Putri (NSP), Raihan Mahendra Sutanto
+# (RM), Rizki Leonardo (RL), Shavira Adeva (SA), Stefan Mayer 
+# Sianturi (SMS), Thrisnadevany Amalia (TA), Zhelia Alifa (ZA)
+
+# REV18: Thu 25 Mar 2021 18:20:42 WIB
+# REV17: Wed 24 Mar 18:53:09 WIB 2021
+# REV16: Mon 14 Sep 21:09:26 WIB 2020
+# REV07: Wed 13 Mar 14:15:03 WIB 2019
+# START: Tue 20 Feb 09:12:43 WIB 2018
+
+# Copyright (C) 2018-2021 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

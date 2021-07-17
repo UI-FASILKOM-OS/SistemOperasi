@@ -1,0 +1,25 @@
+#!/bin/bash
+# REV04: Sun Feb 23 15:41:00 WIB 2020
+# REV03: Thu Feb  6 22:52:01 WIB 2020
+# REV02: Wed Feb  6 19:20:23 WIB 2019
+# REV01: Thu Jan 17 11:17:05 WIB 2019
+# START: Xxx Xxx XX XX:XX:XX XXX 2018
+#
+# Copyright (C) 2018-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: UTS 2018-1 (midterm)
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+echo "START"
+for II in "SATU DUA TIGA"
+do echo $II ; done
+for II in SATU DUA TIGA
+do echo $II ; done
+echo "STOP"
+

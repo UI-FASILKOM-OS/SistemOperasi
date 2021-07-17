@@ -1,0 +1,52 @@
+#!/bin/bash
+# REV06: Sun Feb 23 15:36:04 WIB 2020
+# REV05: Thu Feb  6 19:40:08 WIB 2020
+# REV04: Thu Sep 13 10:07:03 WIB 2018
+# START: Tue Jan 30 19:50:17 WIB 2018
+
+# Copyright (C) 2018-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Check if the screen size is at least 80 x 23 characters
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+XX="xx"
+echo "RESIZE the screen if this following message does not fit in \"80 x 23\""
+echo ""; echo "*** HIT ENTER KEY ***";
+[ "$1" = "$XX" ] || (read YY)
+
+cat - << ZCZCNNNN1
+(ROW 01) START START START START START START START START START START START START
+123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|
+        10        20        30        40        50        60        70        80
+                                                                        (COLUMN)
+123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|
+        10        20        30        40        50        60        70        80
+                                                                        (COLUMN)
+        10        20        30        40        50        60        70        80
+(ROW 09) XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+XXXXX                 SCREEN TEST FOR 80 columns x 23 rows                 XXXXX
+
+(ROW 13) XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|
+        10        20        30        40        50        60        70        80
+                                                                        (COLUMN)
+        10        20        30        40        50        60        70        80
+123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|
+        10        20        30        40        50        60        70        80
+                                                                        (COLUMN)
+        10        20        30        40        50        60        70        80
+123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|
+(ROW 23) END END END END END END END END END END END END END END END END END END
+ZCZCNNNN1
+
+exit 
+
+
+

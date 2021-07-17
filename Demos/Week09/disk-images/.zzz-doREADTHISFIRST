@@ -1,0 +1,48 @@
+
+DISK IMAGES
+===========
+
+1) See also these following URLs
+================================
+
+https://www.gnu.org/software/mtools/manual/mtools.pdf
+https://stackoverflow.com/questions/22385189/add-files-to-vfat-image-without-mounting
+
+
+2) Let's create dummy file "zzzz.txt"
+=====================================
+echo "This is a dummy file" > zzzz.txt
+ls -al
+cat zzzz.txt
+
+
+3) Let's create and format image "test.img"
+===========================================
+   
+mformat -i test.img -C -T 4096 -s 512 -h 1 -v TEST
+mcopy   -i test.img zzzz.txt ::yyyy.txt
+mdir    -i test.img 
+mtype   -i test.img ::yyyy.txt 
+
+
+4) Standard 1.44 MB Disket Image
+================================
+
+mformat -i zzzzDisket.img -C -f 1440 -v Disket_1440
+mdir    -i zzzzDisket.img
+
+
+5) Large Image (33MB)
+=====================
+
+dd if=/dev/zero of=vfat32.img bs=1M count=33
+mkfs.vfat -F 32 -v vfat32.img
+mdir            -i vfat32.img
+
+
+6) Delete Image(s)
+==================
+
+rm -f test.img vfat32.img zzzzDisket.img zzzz.txt
+
+

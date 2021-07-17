@@ -1,0 +1,112 @@
+#!/bin/bash
+# REV14: Sun Feb 23 15:36:04 WIB 2020
+# REV12: Thu Feb  6 21:13:42 WIB 2020
+# REV11: Mon Aug 27 19:18:47 WIB 2018
+# START: Mon Sep  5 11:12:35 WIB 2016
+
+# Copyright (C) 2016-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: CLI collections, run "bash a03-command-lines-demo 11 22 33 44"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+
+XX="xx"
+TMPFILE="ZA-thisfile1.txt"
+TESTDIR1="ZB-SOURCE"
+TESTDIR2="ZC-BACKUP"
+
+[ -d $TESTDIR1 ] && [ -d $TESTDIR2 ] && [ -f $TMPFILE ] || {
+   echo ""; echo "No $TESTDIR1 or $TESTDIR2 or $TMPFILE."
+   echo "Please run script \"a02-sort-n-prepare\" first!"; echo ""
+   exit
+}
+
+echo ""; echo "These are collections of command lines."
+echo "Just run: \"bash $0 11 22 33 44\""
+echo ""; echo "*** Hit Enter Key ***";
+[ "$1" = "$XX" ] || (read YY ; clear)
+
+for II in      \
+   'ls'        \
+   'ls -a'     \
+   'ls -aF'    \
+   'ls -al | head -8 ; echo "(...)"; ls -al | tail -8'             \
+   'ls -a '"$TESTDIR1"' ; echo ":::::::::" ; ls -aF '"$TESTDIR1"   \
+   'cat   '"$TESTDIR1"'/program2.c'                                \
+   'cd    '"$TESTDIR1"' ; cat file1.txt ; echo "::::" ; cat file2.txt ; cd ..' \
+   'cd    '"$TESTDIR1"' ; diff file1.txt file2.txt ; cd ..' \
+   'cd    '"$TESTDIR1"' ; sort file1.txt ; cd ..' \
+   'pushd '"$TESTDIR1"' ; wc file1.txt ; wc -l file1.txt ; wc -c file1.txt;popd'\
+   'date'     \
+   'date +%y' \
+   'date +%Y' \
+   'date +%d\ %b\ %Y\ at\ %H:%M:%S;echo "::::";date "+%d %b %Y at %H:%M:%S"' \
+   'top -b -n 1 | head -15' \
+   'top -b -n 1 | head -9; echo "... etc ..."; top -b -n 1 | tail -7' \
+   'find . -type d -exec "echo" "{}" ";";echo ":::"; find . -type d -print' \
+   'MYVAR="This is MYVAR string"; echo $MYVAR; echo "$MYVAR"; echo \$MYVAR;echo '"'"'$MYVAR'"'"'' \
+   'printf "PATH=[%s]\nHOME=[%s]\nSHELL=[%s]\n" $PATH $HOME $SHELL' \
+   'printf "PID=[%s] --- NARG=[%s] --- ARG0=[%s]\n" $$ $# $0' \
+   'printf "ARG1=[%s]-- ARG2=[%s] -- ARG3=[%s] -- ARG4=[%s]\n" $1 $2 $3 $4'\
+   'function dummy { printf "BASH PID = %s\n" $$ ; return 99 ; } ; ' \
+   'dummy ; printf "Return value = %s\n" $? ' \
+   'function doawk { awk -f '"$TESTDIR1"'/file.awk /etc/passwd ; } ; ' \
+   'doawk | head -6 ; echo "(...)" ; doawk | tail -6 ; ' \
+   '/bin/bash --version' \
+   'time (echo -n "DELAY 3 seconds..";sleep 1;echo -n "..";sleep 1;echo -n "..";sleep 1;echo ".. DONE")' \
+
+do
+    COMMENT="RUNNING:  $II"
+    SIZE=${#COMMENT}
+    (( $SIZE > 80 )) && SIZE=80
+    STR=$(eval printf "%0.s=" {1..$SIZE})
+    echo "$STR"
+    echo $COMMENT
+    echo "$STR"
+    eval $II
+    echo ""; echo "*** Hit Enter Key ***";
+    [ "$1" = "$XX" ] || (read YY ; clear)
+done
+
+exit
+
+# TAKE NOTE (ZA)
+# Program ini akan menampilkan isi dari setiap hal yang ada pada 
+#   berkas "TMPFILE", direktori "TESTDIR1", dan direktori "TESTDIR2"
+# Setelah baris "for II in      \" terdapat contoh perintah sederhana:
+#
+# ls         menampilkan file-file yang berada di Week01 yang 
+#            sedang aktif.
+# ls -a      menampilkan file-file yang berada di Week01 yang aktif
+#            beserta file hiddennya.
+# ls -aF     menampilkan file-file yang berada di Week01 yang aktif 
+#            beserta jenisnya seperti "berkas",  "direktori", dst.
+# ls -al     menampilkan file-file yang berada di Week01 yang aktif 
+#            beserta file hidden +atribut dan permission filenya.
+# ls -a ...  menampilkan file-file yang berada pada TESTDIR1 .
+#            beserta perbedaannya.
+# cat ...    menampilkan isi file dari program2.c.
+# Line 36:   menampilkan perbedaan isi dari file1.txt dan file2.txt.
+# Line 37:   diff, membandingkan perbedaan isi dari file1.txt dan 
+#            file2.txt. 3,4c3,4 artinya perbedaan pada baris 3 dan 4.
+# Line 38:   sort, mengurutkan isi dari file1.txt.
+# Line 39:   wc, menghitung jumlah baris, kata, dan byte pada suatu file. 
+#            wc -l: jumlah baris, wc -c: jumlah byte.
+# Line 40:   date, menampilkan tanggal saat mengakses program tersebut.
+# Line 41:   date +%y menampilkan 2 digit tahun.
+# Line 42:   date +%Y menampilkan tahun.
+# Line 43:   menampilkan persamaan penyajian tanggal, bulan, tahun, jam, 
+#            menit, dan detik.
+# Line 44 dan 45: top, digunakan untuk mengetahui informasi secara real 
+#            time sesuai proses yang berjalan saat ini pada sistem 
+#            operasi Linux di komputer kita.
+# Line 46:   find, mencari sesuatu file di dalam direktori Linux kita.
+# PID:       Process ID untuk process tersebut
+# PATH:      penempatan file yang sedang kita cari
+

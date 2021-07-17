@@ -1,0 +1,12 @@
+# REV18: Thu 25 Mar 2021 18:20:42 WIB
+# REV17: Wed 24 Mar 18:53:09 WIB 2021
+# REV16: Mon 14 Sep 21:09:26 WIB 2020
+# REV07: Wed 13 Mar 14:15:03 WIB 2019
+# START: Tue 20 Feb 09:12:43 WIB 2018
+
+# Copyright (C) 2018-2021 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

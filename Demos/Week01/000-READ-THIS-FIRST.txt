@@ -1,0 +1,70 @@
+# INFO: Read This First! ==== ========= =========
+# Version: Tue 30 Mar 17:57:29 WIB 2021
+cat $0; exit 0;
+========= ========= ========= ========= ========= ========= ========= =========
+These files are available in (https://os.vlsm.org/)
+GitHub:
+https://github.com/UI-FASILKOM-OS/SistemOperasi/tree/master/Demos
+https://github.com/UI-FASILKOM-OS/SistemOperasi/archive/master.zip
+
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+========= ========= ========= ========= ========= ========= ========= =========
+========= ========= ========= ========= ========= ========= ========= =========
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+HOW TO TRY THIS DEMO:
+=====================
+
+Use "bash" to run each script. Eg.
+   bash a01-TEST-SCREEN
+   bash a02-sort-n-prepare
+   bash a03-command-lines-demo 11 22 33 44
+
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+========= ========= ========= ========= ========= ========= ========= =========
+[000-READ-THIS-FIRST.txt] Read This First! ==== ========= =========
+[a01-SCREEN-CHECK] Check if the screen size is at least 80 x 23 characters
+[a02-sort-n-prepare] This script is sorting files and preparing the demo.
+[a03-command-lines-demo] CLI collections, run "bash a03-command-lines-demo 11 22 33 44"
+[a04-does-it-exist] Does a file exists? Run "bash a04-does-it-exist"
+[a05-finding-EXIST] Finding "EXISTS". Just run "bash a05-finding-EXIST"
+[       a06-loop] Just run "bash a06-loop 11 22 33 44"
+[     a07-tester] Just run "bash a07-tester"
+[a08-append-a-file] Just run "bash a08-append-a-file"
+[a09-add-numbers] Add line numbers to a file. Run "bash a09-add-numbers ZA-thisfile1.txt"
+[     a10-mysha1] Just run "bash a10-mysha1"
+[    a11-banding] Comparing folder "ZB-SOURCE/" and "ZC-BACKUP/". Run "bash a11-banding"
+[      a12-fixfs] fixfs: fixing file systems name and mode. Run "bash a12-fixfs"
+[       a13-last] list of all users logged in
+[      a14-absen] attendance (absen) list
+[     a15-uts171] UTS 2017-1 (midterm)
+[     a16-uts181] UTS 2018-1 (midterm)
+[     a17-uts182] UTS 2018-2 (midterm)
+[     a18-uts191] UTS 2019-1 (midterm)
+[     a19-uts192] UTS 2019-2 (midterm)
+[     a20-uts201] UTS 2020-1 (midterm)
+    What is the output of:
+       bash a20-uts201
+       bash a20-uts201 a20-uts201
+========= ========= ========= ========= ========= ========= ========= =========
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+# Special thanks to:
+# Anisha Inas Izdihar (AII), Benedictus Alvin (BA), Ibnu Sofian 
+# Firdaus (ISF), Irmanpen Panjaitan (IP), Ivana Irene Thomas (IIT),
+# Michael Giorgio Wirawan (MGW), Muhammad Afkar (MA), Muhammad 
+# Hanif Pratama (MHP), Muhammad Iqbal Mahendra (MIM), M. Ikhsan 
+# Kurniawan (MIK), Nixi Sendya Putri (NSP), Raihan Mahendra Sutanto
+# (RM), Rizki Leonardo (RL), Shavira Adeva (SA), Stefan Mayer 
+# Sianturi (SMS), Thrisnadevany Amalia (TA), Zhelia Alifa (ZA)
+
+# REV18: Thu 25 Mar 2021 18:20:42 WIB
+# REV17: Wed 24 Mar 18:53:09 WIB 2021
+# REV16: Mon 14 Sep 21:09:26 WIB 2020
+# REV07: Wed 13 Mar 14:15:03 WIB 2019
+# START: Tue 20 Feb 09:12:43 WIB 2018
+
+# Copyright (C) 2018-2021 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

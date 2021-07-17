@@ -1,0 +1,78 @@
+#!/bin/bash
+# REV07: Sun Feb 23 15:41:00 WIB 2020
+# REV09: Thu Feb  6 23:31:29 WIB 2020
+# REV07: Mon Aug 27 20:09:35 WIB 2018
+# REV05: Fri Sep  8 20:48:24 WIB 2017
+# START: Thu Dec 19 00:00:00 WIB 2013
+
+# Copyright (C) 2013-2020 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: fixfs: fixing file systems name and mode. Run "bash a12-fixfs"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+# Add escape \"
+# Replacing all funny and white characters with a dash (-).
+# Replacing multiple dashes (---) with a single dash (-)
+# No dash before a dot.
+
+function recursive() {
+   ls -1 | gawk '{
+      FNAME1=$0
+      gsub (/\"/,"\\\"",FNAME1) 
+      FNAME2=FNAME1
+      NCHG=0
+      NCHG += gsub (/[:!() ^@&,\[\]\?\*\#\"\\'\'']/,"-",FNAME2) 
+      NCHG += gsub (/\.-/,"-",FNAME2) 
+      NCHG += gsub (/--+/,"-",FNAME2) 
+      NCHG += gsub (/_-/,"-",FNAME2) 
+      NCHG += gsub (/-_/,"-",FNAME2) 
+      NCHG += gsub (/-\./,".",FNAME2) 
+      NCHG += gsub (/\._/,"_",FNAME2) 
+      NCHG += gsub (/__+/,"_",FNAME2) 
+      NCHG += gsub (/_\./,".",FNAME2) 
+      NCHG += gsub (/\.\.+/,".",FNAME2) 
+      NCHG += gsub (/^-/,"",FNAME2) 
+      NCHG += gsub (/-$/,"",FNAME2) 
+
+      if (NCHG > 0) {
+         EXTRA=""
+         TMPF=FNAME2 EXTRA
+         while ((getline < TMPF) >= 0) {
+            EXTRA++
+            TMPF=FNAME2 "-" EXTRA
+         }
+         system("/bin/mv -f \""  FNAME1  "\" " TMPF)
+      }
+   }'
+
+   # chmod 755 for all directories
+   # chmod 644 for all files
+   for II in {.??,}*
+   do
+      [ -d "$II" ] && [ ! -L "$II" ] && {
+         chmod 755 "$II"
+         cd "$II"
+         # Recursive inside the DIR
+         recursive
+         cd ..
+      }
+      [ -f "$II" ] && chmod 644 "$II"
+   done
+}
+
+recursive
+echo "Check files in subfolder ZB-SOURCE"
+
+exit
+
+###############################
+# TAKE NOTE (WK16)
+#
+# this file will fix name of file that contain irregular name
+

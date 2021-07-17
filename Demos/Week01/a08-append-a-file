@@ -1,0 +1,54 @@
+#!/bin/bash
+# REV10: Sun Feb 23 15:36:04 WIB 2020
+# REV09: Thu Feb  6 21:55:33 WIB 2020
+# REV07: Mon Aug 27 20:08:30 WIB 2018
+# START: Mon Sep  5 14:28:02 WIB 2016
+
+# Copyright (C) 2016-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Just run "bash a08-append-a-file"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+TMPFILE="ZA-thisfile1.txt"
+/bin/rm -f $TMPFILE
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+sleep 1
+# ############################################
+echo "APPENDING: into $TMPFILE =============="
+for ii in f1 f2 
+do
+   echo "Appending: $ii"
+   echo -n "$ii " >> $TMPFILE
+done
+# ############################################
+for ii in f3 f4 f5 f6
+do
+   echo "Appending: $ii"
+   echo "$ii " >> $TMPFILE
+done
+sleep 1
+
+# #################################################
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+echo "FILE: $TMPFILE"
+cat $TMPFILE
+
+# #################################################
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+echo "Displaying word by word of $TMPFILE ==="
+JJ=0
+for ii in `cat $TMPFILE`
+do
+   JJ=$((JJ + 1))
+   echo "Word($JJ): $ii"
+done
+
+exit 0
+
+

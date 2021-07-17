@@ -1,0 +1,35 @@
+#!/bin/bash
+# REV08: Sun Feb 23 15:36:04 WIB 2020
+# REV07: Thu Feb  6 20:43:55 WIB 2020
+# REV06: Mon Aug 27 20:07:30 WIB 2018
+# START: Mon Sep  5 14:34:41 WIB 2016
+
+# Copyright (C) 2016-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: Just run "bash a06-loop 11 22 33 44"
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo ""
+[ -f $INFO ] && bash $INFO $0
+
+echo "" 
+[ -z "$3" ] && { echo "Run this AGAIN with arguments. Eg. \"bash a06-loop 11 22 33 44\"" ; exit 1; }
+
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+echo 'Loop with [*]'
+for ii in "$*"
+do
+   echo $ii
+done
+
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+echo 'Loop with [@]'
+for ii in "$@"
+do
+   echo $ii
+done
+exit 0
+

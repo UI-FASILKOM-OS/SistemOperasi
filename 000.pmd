@@ -1,0 +1,75 @@
+---
+layout: "layout"
+title:  "GitHub Page Configuration Files"
+---
+
+### _config.yml
+
+```
+(> _config.yml <)
+```
+
+<br>
+### Gemfile
+
+```
+(> Gemfile <)
+```
+
+<br>
+### _layouts/layout.html
+
+```
+{% raw %}
+(> _layouts/layout.html <)
+{% endraw %}
+```
+
+<br>
+### Makefile
+
+```
+(> Makefile <)
+```
+
+<br>
+### _includes/head.html
+
+```
+{% raw %}
+(> _includes/head.html <)
+{% endraw %}
+```
+
+<br>
+### _includes/navbar.html
+
+```
+{% raw %}
+(> _includes/navbar.html <)
+{% endraw %}
+```
+
+<br>
+### assets/css/style.css
+
+```
+(> assets/css/style.css <)
+```
+
+<br>
+### _includes/google-analytics.html
+
+```
+{% raw %}
+(> _includes/google-analytics.html <)
+{% endraw %}
+```
+
+<br>
+### assets/scripts/includeScript.py 
+
+```
+(> assets/scripts/includeScript.py <)
+```
+

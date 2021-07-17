@@ -1,0 +1,84 @@
+#!/bin/bash
+# REV03: Sun Feb 23 15:41:00 WIB 2020
+# REV02: Thu Feb  6 22:47:40 WIB 2020
+# REV01: Wed Sep 12 20:45:41 WIB 2018
+# START: Wed Sep 12 18:35:04 WIB 2018
+
+# Copyright (C) 2018-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: list of all users logged in
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+cat $0
+
+exit 0
+
+## BASH IGNORES AFTER EXIT
+
+# Execute this following line by line
+
+# AWK ################################# ######
+
+echo "COL1 COL2 COL3" 
+
+echo "COL1 COL2 COL3" | awk '{print $1}'
+
+##############################################
+
+LDIR="ZB-SOURCE"
+echo "LDIR=$LDIR"
+
+LAST0="ZB-SOURCE/last.0"
+echo "LAST0=$LAST0"
+
+##############################################
+
+checkingdir() {
+   [ -d $LDIR ] || {
+      echo "mkdir $LDIR"
+      mkdir $LDIR
+   }
+}
+  
+##############################################
+
+last
+
+last -w
+
+last -w | awk '{print $1}'
+
+last -w | awk '{print $1}' | sort -u 
+
+last -w | awk '{print $1}' | sort -u > $LAST0
+
+##############################################
+
+lastweek() {
+   echo ""
+   echo "=========================================================================="
+   echo "This week visitor(s):"
+   echo ""
+
+   COUNTER=0
+   for ii in `cat $LAST0`
+   do
+      printf "%-17s " $ii
+      let COUNTER=(COUNTER+1)%4
+      if [ $COUNTER -eq 0 ]
+      then
+         echo ""
+         COUNTER=0
+      fi
+   done
+   echo ""
+   echo "=========================================================================="
+   echo ""
+}
+

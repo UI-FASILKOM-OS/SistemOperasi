@@ -1,0 +1,32 @@
+#!/bin/bash
+# REV03: Sun Feb 23 15:41:00 WIB 2020
+# REV02: Thu Feb  6 22:53:36 WIB 2020
+# REV01: Thu Feb  6 17:59:35 WIB 2020
+# START: Fri Oct 25 13:14:00 WIB 2019
+
+# Copyright (C) 2019-2020 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: UTS 2019-2 (midterm)
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+LINE1="= BEGIN"
+LINE2="TESTING regex using awk"
+LINE3="TESTING REGEX using awk"
+LINE4="= = END"
+
+echo $LINE1
+echo $LINE2 | awk '/regex/{print $1}' 
+echo $LINE3 | awk '/regex/{print $1}' 
+echo $LINE2 | tr [A-Z] [a-z] | awk '/regex/{print $1}' 
+echo $LINE3 | tr [A-Z] [a-z] | awk '/regex/{print $1}' 
+echo $LINE4
+
+exit 0
+
+

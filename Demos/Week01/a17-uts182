@@ -1,0 +1,24 @@
+#!/bin/bash
+# REV03: Sun Feb 23 15:41:00 WIB 2020
+# REV02: Thu Feb  6 22:52:34 WIB 2020
+# REV01: Wed Feb  6 19:21:05 WIB 2019
+# REV00: Thu Jan 17 11:21:44 WIB 2019
+# START: Xxx Xxx XX XX:XX:XX XXX XXXX
+# 
+# Copyright (C) 2018-2020 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: UTS 2018-2 (midterm)
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+
+VAR="talas"
+echo "$VAR"
+KALIMAT="Keladi tidak sama dengan $VAR"
+echo "$KALIMAT"
+echo "$KALIMAT" | gawk '$5 ~ /s$/ {print $1}'
+

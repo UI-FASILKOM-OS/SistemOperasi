@@ -1,0 +1,38 @@
+
+1) To see some "systemd" commands, run
+======================================
+
+bash a1-some-systemd-command-lines
+
+
+2) Some useful "systemctl" commands:
+====================================
+
+##########################################
+systemctl start [name.service]
+systemctl stop [name.service]
+systemctl restart [name.service]
+systemctl reload [name.service]
+systemctl status [name.service]
+systemctl is-active [name.service]
+systemctl list-units --type service --all
+##########################################
+systemctl list-unit-files
+systemd-analyze blame
+##########################################
+systemctl list-units
+systemctl list-units | grep .service 
+systemctl list-units | grep ssh.service
+systemctl status ssh.service
+systemctl is-enabled ssh
+journalctl
+journalctl -b
+##########################################
+
+
+3) REF:
+=======
+
+- https://www.youtube.com/watch?v=AtEqbYTLHfs
+- https://www.linux.com/learn/understanding-and-using-systemd
+

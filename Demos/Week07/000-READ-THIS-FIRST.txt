@@ -1,0 +1,160 @@
+# INFO: Read This First! ==== ========= =========
+# Version: Tue 30 Mar 17:57:29 WIB 2021
+cat $0; exit 0;
+========= ========= ========= ========= ========= ========= ========= =========
+These files are available in (https://os.vlsm.org/)
+GitHub:
+https://github.com/UI-FASILKOM-OS/SistemOperasi/tree/master/Demos
+https://github.com/UI-FASILKOM-OS/SistemOperasi/archive/master.zip
+
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+========= ========= ========= ========= ========= ========= ========= =========
+# INFO:                   To list files, run:  ls -al
+# INFO:                   To compile the “.c” files, run make
+# INFO:                   The recent UAS archive for WEEK06 and WEEK07 is in folder WEEK08.
+
+[000-READ-THIS-FIRST.txt] Read This First! ==== ========= =========
+                  To list files, run:  ls -al
+                  To compile the “.c” files, run make
+                  The recent UAS archive for WEEK06 and WEEK07 is in folder WEEK08.
+[    00-thread.c] PTHREAD: See also "99-myutils.c" and "99-myutils.h"
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished
+[    01-thread.c] PTHREAD: See also "99-myutils.c" and "99-myutils.h"
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[   02-prodkon.c] Producer - Consumer with PTHREAD.
+                  Produsen():      the producer.
+                  Konsumen():      the consumer.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+[ 03-readwrite.c] Readers - Writers with PTHREAD.
+                  Reader():        a Reader.
+                     startRead():  the Reader starts   reading.
+                     endRead():    the Reader finishes reading.
+                  Write():         a Writer.
+                     startWrite(): the Writer starts   writing.
+                     endWrite():   the Writer finishes writing.
+                  rehat_acak():    random stop.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+[ 04-readwrite.c] Readers - Writers with PTHREAD.
+                  Reader():        a Reader.
+                     startRead():  the Reader starts   reading.
+                     endRead():    the Reader finishes reading.
+                  Write():         a Writer.
+                     startWrite(): the Writer starts   writing.
+                     endWrite():   the Writer finishes writing.
+                  rehat_acak():    random stop.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+[       05-alu.c] ALU with PTHREAD: add(), substract(), multiply(), devide().
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[     06-balap.c] RACING with PTHREAD: pembalap():   a racer.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[  07-sudokuSV.c] Verify SUDOKU with PTHREAD. 
+                  sudoku[][]:      the sudoku matrix (9x9).
+                     27 sudokuValidator() pthreads: 9 columns, 9 rows, 9 boxes.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[  08-mainDadu.c] Rolling the Dics with PTHREADs. 
+                  Player():        one pthread for each player.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[     09-rpsls.c] Rolling the Dics PTHREAD. 
+                  Player():        one pthread for each player.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+                  *Rock*Paper*Scissors*Lizard*Spock*
+                  Invented by Sam Kass and Karen Bryla
+                  Rock crushes Scissors
+                  Rock crushes Lizard
+                  Paper covers Rock
+                  Paper disproves Spock
+                  Scissors cut Paper
+                  Scissors decapitate Lizard
+                  Lizard eats Paper
+                  Lizard poisons Spock
+                  Spock vaporizes Rock
+                  Spock smashes Scissors
+[ 10-kirikanan.c] Alternately Left and Right with PTHREAD. 
+                  Kiri():          one left pthread.
+                  Kanan():         one right pthread.
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[    11-thread.c] PTHREAD: See also "99-myutils.c" and "99-myutils.h"
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+[12-multi-thread.c] PTHREAD: See also "99-myutils.c" and "99-myutils.h"
+                  Terdapat perbedaan nilai "share" antar "thread()".
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+[13-mini-sudoku-4x4.c] SUDOKU 4x4
+                  daftar_trit():   register a pthread.
+                  jalankan_trit(): run the registered pthread(s).
+                  beberes_trit():  finished.
+                  sem_init():      init a semaphore.
+                  sem_wait():      wait a semaphore.
+                  sem_post():      signal a semaphore.
+========= ========= ========= ========= ========= ========= ========= =========
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+# Special thanks to:
+# Anisha Inas Izdihar (AII), Benedictus Alvin (BA), Ibnu Sofian 
+# Firdaus (ISF), Irmanpen Panjaitan (IP), Ivana Irene Thomas (IIT),
+# Michael Giorgio Wirawan (MGW), Muhammad Afkar (MA), Muhammad 
+# Hanif Pratama (MHP), Muhammad Iqbal Mahendra (MIM), M. Ikhsan 
+# Kurniawan (MIK), Nixi Sendya Putri (NSP), Raihan Mahendra Sutanto
+# (RM), Rizki Leonardo (RL), Shavira Adeva (SA), Stefan Mayer 
+# Sianturi (SMS), Thrisnadevany Amalia (TA), Zhelia Alifa (ZA)
+
+# REV18: Thu 25 Mar 2021 18:20:42 WIB
+# REV17: Wed 24 Mar 18:53:09 WIB 2021
+# REV16: Mon 14 Sep 21:09:26 WIB 2020
+# REV07: Wed 13 Mar 14:15:03 WIB 2019
+# START: Tue 20 Feb 09:12:43 WIB 2018
+
+# Copyright (C) 2018-2021 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

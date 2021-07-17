@@ -1,0 +1,32 @@
+#!/bin/bash
+# REV05: Sun Feb 23 15:41:00 WIB 2020
+# REV04: Thu Feb  6 22:49:45 WIB 2020
+# REV03: Thu Sep 27 21:44:00 WIB 2018
+# START: Wed Sep 12 20:58:04 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# INFO: attendance (absen) list
+INFO="../ZADMIN/zzz-generate-READ-THIS-FIRST.sh"
+echo "";
+[ -f $INFO ] && bash $INFO $0
+echo "========= ========= ========= ========= ========= ========= ========= ========="
+cat $0
+
+exit 0
+## BASH IGNORES AFTER EXIT
+
+w
+export PROCPS_USERLEN=16
+w
+w | gawk '$5 ~ /s$/ {print}'
+w | gawk '$5 ~ /s$/ {print $1}'
+w | gawk '$5 ~ /s$/ {print $1, systime()}'
+w | gawk '$5 ~ /s$/ {print $1, strftime("%y%m%d-%H%M%S", systime())}'
+w | gawk '$5 ~ /s$/ {print $1, strftime("%y%m%d-%H%M%S", systime())}' | sort -u
+
+

@@ -1,0 +1,8 @@
+========= ========= ========= ========= ========= ========= ========= =========
+These files are available in (https://os.vlsm.org/)
+GitHub:
+https://github.com/UI-FASILKOM-OS/SistemOperasi/tree/master/Demos
+https://github.com/UI-FASILKOM-OS/SistemOperasi/archive/master.zip
+
+!!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!! !!!!!!!!!
+========= ========= ========= ========= ========= ========= ========= =========

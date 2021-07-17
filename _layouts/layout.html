@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- File _layouts/layout.html           -->
+<!-- (c) 2021 - 2021 VauLSMorg           -->
+<!-- REV00: Sun 04 Jul 2021 10:48:43 WIB -->
+<!-- START: Wed 17 Feb 2021 19:44:53 WIB -->
+<!-- This is a free HTML file            -->
+{% include head.html %}
+<body class="plainclass1">
+<!-- body class="backclass" -->
+<div class="container">
+  <header>
+  <div class="row">
+    <div class="column left">
+      <img src="{{ site.baseurl }}/assets/images/UI-fasilkom-e.png" alt="FASILKOM UI" style="width:130px; border-radius:50%">
+    </div>
+    <div class="column right1">
+      {% if page.title %}{{ page.title | escape }}
+      {% else %}{{ site.title | escape }}{% endif %}
+    </div>
+    <div class="column right2">
+      {% if page.author %}{{ page.author | escape }}
+      {% else %}{{ site.author | escape }}{% endif %}
+      ---
+      {% if page.address %}{{ page.address | escape }}
+      {% else %}{{ site.address | escape }}{% endif %}
+    </div>
+  </div>
+  </header>
+  {% include navbar.html %}
+  <section>
+     {{ content }}
+  </section>
+  {% include footer.html %}
+  {% include google-analytics.html %}
+  {% include scripts.html %}
+</div>
+</body>
+</html>
+
+
